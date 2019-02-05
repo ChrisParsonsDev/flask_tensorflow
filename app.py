@@ -7,11 +7,9 @@ import time
 import tensorflow as tf
 
 app = Flask(__name__)
-# MODEL_PATH = '/usr/src/app/model/graph.pb'
-# LABEL_PATH = '/usr/src/app/model/labels.txt'
+MODEL_PATH = '/usr/src/app/model/graph.pb'
+LABEL_PATH = '/usr/src/app/model/labels.txt'
 
-MODEL_PATH = './model/graph.pb'
-LABEL_PATH = './model/labels.txt'
 ##################################################
 # REST API Endpoints For Web App
 ##################################################
