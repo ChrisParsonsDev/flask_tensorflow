@@ -1,6 +1,6 @@
 # Flask TensorFlow
 
-This simple web app serves a [TensorFlow](https://www.tensorflow.org/) protobuf file as a simple flask web app. A docker image can be found here:
+This simple web app serves a [TensorFlow](https://www.tensorflow.org/) protobuf file as a flask web app. A docker image can be found here:
 
 ```
 https://hub.docker.com/r/chrisparsonsdev/flask_tensorflow
