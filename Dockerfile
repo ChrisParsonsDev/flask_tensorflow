@@ -3,6 +3,7 @@ FROM ubuntu:16.04
 
 # upgrade pip
 RUN apt-get update -y && \
+    apt install -y python3 && \
     apt-get install -y python-pip python-dev && \
     pip install --upgrade pip
 
@@ -24,4 +25,4 @@ COPY model/labels.txt /usr/src/app/model/
 EXPOSE 5000
 
 # run the application
-CMD ["python", "/usr/src/app/app.py"]
+CMD ["python3", "/usr/src/app/app.py"]
