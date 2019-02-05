@@ -1,27 +1,28 @@
 # flask_tensorflow/app.py
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from scipy.misc import imread, imresize
 import numpy as np
 import time
 import tensorflow as tf
 
 app = Flask(__name__)
-MODEL_PATH = '/usr/src/app/model/graph.pb'
-LABEL_PATH = '/usr/src/app/model/labels.txt'
+# MODEL_PATH = '/usr/src/app/model/graph.pb'
+# LABEL_PATH = '/usr/src/app/model/labels.txt'
 
+MODEL_PATH = './model/graph.pb'
+LABEL_PATH = './model/labels.txt'
 ##################################################
 # REST API Endpoints For Web App
 ##################################################
 
 @app.route('/')
 def homepage():
-    return 'Hey, we have Flask in a Docker container! Instructions to follow'
+    return render_template('index.html')
 
 @app.route('/classification')
 def classification():
     file_path = request.args['file_path']
-    batch_size = 1
     # Load in an image to classify and preprocess it
     image_data = imread(file_path)
     image = imresize(image_data, [224, 224])
@@ -102,7 +103,7 @@ if __name__ == '__main__':
     print('Done.')
     # Get the input and output operations
     # If you don't know the operation name use this:
-    # printTensors('./model/graph.pb'
+    # printTensors('./model/graph.pb')
     input_op = graph.get_operation_by_name('input')
     input_tensor = input_op.outputs[0]
     output_op = graph.get_operation_by_name('final_result')
